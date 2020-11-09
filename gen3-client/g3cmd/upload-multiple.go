@@ -48,7 +48,7 @@ func init() {
 			}
 			dataExplorerURL := host.Scheme + "://" + host.Host + "/explorer"
 
-			var objects []ManifestObject
+			objects := make([]ManifestObject, 1)
 
 			// initialize transmission logs
 			logs.InitSucceededLog(profile)
@@ -71,7 +71,7 @@ func init() {
 					log.Printf("Failed reading manifest %s, %v\n", manifestPath, err)
 					log.Fatalln("A valid manifest can be acquired by using the \"Download Manifest\" button on " + dataExplorerURL)
 				}
-				json.Unmarshal(manifestBytes, &objects)
+				json.Unmarshal(manifestBytes, &objects[0])
 			default:
 				log.Println("Unsupported manifast format")
 				log.Fatalln("A valid manifest can be acquired by using the \"Download Manifest\" button on " + dataExplorerURL)
