@@ -21,7 +21,7 @@ RUN COMMIT=$(git rev-parse HEAD); \
     '    gitcommit="'"${COMMIT}"'"'\
     '    gitversion="'"${VERSION}"'"'\
     ')' > gen3-client/g3cmd/gitversion.go \
-    && go build -o /gen3-client
+    && go build -ldflags "-s -w" -o /gen3-client
 
 FROM scratch
 COPY --from=build-deps /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
