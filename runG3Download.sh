@@ -201,13 +201,13 @@ function downloadErrorCheck(){
 function singleDownload(){
 	[ -z $guidsArray ] && guidsArray=($(convertJsonToArrayNoQuotes $guids))
 	for guid in "${guidsArray[@]}"; do
-		downloadErrorCheck "gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[@]}"
+		downloadErrorCheck "gen3-client download-single --profile=$profile --no-prompt --guid=$guid ${flags[*]}"
 	done
 }
 
 function multiDownload(){
 	echo "Downloading using manifest"
-	downloadErrorCheck "gen3-client download-multiple --profile=$profile --no-prompt ${flags[@]}"
+	downloadErrorCheck "gen3-client download-multiple --profile=$profile --no-prompt ${flags[*]}"
 }
 
 #check if both guid and manifest given

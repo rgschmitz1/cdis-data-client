@@ -25,7 +25,7 @@ RUN COMMIT=$(git rev-parse HEAD); \
 
 # Store only the resulting binary in the final image
 # Resulting in significantly smaller docker image size
-FROM alpine:3.12
+FROM alpine:3.17.1
 ENV GEN3_CLIENT_VERSION_CHECK=false
 RUN adduser --disabled-password -s /bin/bash user
 RUN apk add --update --no-cache bash ca-certificates curl
